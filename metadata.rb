@@ -1,0 +1,5 @@
+name                "haskell"
+maintainer          "Michael S. Klishin"
+license             "Apache 2.0"
+description         "This is an OpsCode Chef cookbook that provisions GHC 7.4 and Haskell Platform 2012.02 from source"
+version             "0.0.1"

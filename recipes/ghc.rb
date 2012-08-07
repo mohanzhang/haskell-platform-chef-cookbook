@@ -49,7 +49,7 @@ end
 # 3. configure, make install
 bash "build and install GHC" do
   user "root"
-  cwd  "/tmp"
+  cwd  td
 
   code <<-EOS
     tar jfx #{local_tarball}

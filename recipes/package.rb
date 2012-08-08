@@ -37,12 +37,17 @@ when "ubuntu"
   end
 end
 
+execute "update apt repositories" do
+  command "apt-get update"
+  user "root"
+end
+
 script "initialize cabal" do
   interpreter "bash"
-  user node.travis_build_environment.user
-  cwd  node.travis_build_environment.home
+  user node.cabal.user
+  cwd  node.cabal.home
 
-  environment Hash['HOME' => node.travis_build_environment.home]
+  environment Hash['HOME' => node.cabal.home]
 
   code <<-SH
   cabal update
@@ -62,7 +67,7 @@ package "haskell-platform" do
 end
 
 cookbook_file "/etc/profile.d/cabal.sh" do
-  owner node.travis_build_environment.user
-  group node.travis_build_environment.group
+  owner node.cabal.user
+  group node.cabal.group
   mode 0755
 end
